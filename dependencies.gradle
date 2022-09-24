@@ -1,0 +1,27 @@
+ext {
+    def libs = extensions.getByType(VersionCatalogsExtension).named("libs")
+
+    // version category로부터 취득
+    core = libs.findVersion("core").get()
+
+    // Library 항목들도 category로부터 취득
+    def librariesValue = [:]
+    libs.libraryAliases.each {
+        librariesValue[it] = getLibraryByName(libs, it)
+    }
+    libraries = librariesValue
+    // check
+    println ">>> Libraries in Version Category"
+    libraries.each { key, value ->
+        println "[${key}] : ${value}"
+    }
+}
+
+private getLibraryByName(VersionCatalog libs, String name) {
+    def library = libs.findLibrary(name)
+    if (library.isPresent()) {
+        return library.get().get()
+    } else {
+        throw GradleException("Could not find a library for `$name`")
+    }
+}
