@@ -1,13 +1,13 @@
 ext {
-    def libs = extensions.getByType(VersionCatalogsExtension).named("libs")
-
     // version category로부터 취득
-    core = libs.findVersion("core").get()
+    core = libs.versions.core.get()
+    println ">>> Core version : " + core
 
     // Library 항목들도 category로부터 취득
+    def libsFromToml = extensions.getByType(VersionCatalogsExtension).named("libs")
     def librariesValue = [:]
-    libs.libraryAliases.each {
-        librariesValue[it] = getLibraryByName(libs, it)
+    libsFromToml.libraryAliases.each {
+        librariesValue[it] = getLibraryByName(libsFromToml, it)
     }
     libraries = librariesValue
     // check

@@ -6,15 +6,15 @@
 // root/dependencies.gradle
 
 ext {
-    def libs = extensions.getByType(VersionCatalogsExtension).named("libs")
-
     // version category로부터 취득
-    core = libs.findVersion("core").get()
+    core = libs.versions.core.get()
+    println ">>> Core version : " + core
 
     // Library 항목들도 category로부터 취득
+    def libsFromToml = extensions.getByType(VersionCatalogsExtension).named("libs")
     def librariesValue = [:]
-    libs.libraryAliases.each {
-        librariesValue[it] = getLibraryByName(libs, it)
+    libsFromToml.libraryAliases.each {
+        librariesValue[it] = getLibraryByName(libsFromToml, it)
     }
     libraries = librariesValue
     // check
@@ -32,6 +32,18 @@ private getLibraryByName(VersionCatalog libs, String name) {
         throw GradleException("Could not find a library for `$name`")
     }
 }
+```
+
+Result
+
+```tex
+>>> Core version : 1.9.0
+>>> Libraries in Version Category
+[activity] : androidx.activity:activity-ktx:1.6.0
+[androidX.activity.ktx] : androidx.activity:activity-ktx:1.6.0
+[androidX.appcompat] : androidx.appcompat:appcompat:1.5.1
+[androidX.core.ktx] : androidx.core:core-ktx:1.9.0
+[google.material] : com.google.android.material:material:1.6.1
 ```
 
 ### (2) Use Extra Properties
