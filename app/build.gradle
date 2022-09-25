@@ -40,7 +40,6 @@ dependencies {
     // Use library in ExtraPropertiesExtension <-- from Version Category
     implementation ext.libraries.activity
     // Use library in Version Category
-    implementation libs.androidX.activity.ktx
     implementation libs.google.material
 
     testImplementation 'junit:junit:4.13.2'

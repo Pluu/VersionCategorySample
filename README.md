@@ -40,9 +40,8 @@ Result
 >>> Core version : 1.9.0
 >>> Libraries in Version Category
 [activity] : androidx.activity:activity-ktx:1.6.0
-[androidX.activity.ktx] : androidx.activity:activity-ktx:1.6.0
 [androidX.appcompat] : androidx.appcompat:appcompat:1.5.1
-[androidX.core.ktx] : androidx.core:core-ktx:1.9.0
+[androidX.core] : androidx.core:core:1.9.0
 [google.material] : com.google.android.material:material:1.6.1
 ```
 
@@ -59,7 +58,7 @@ dependencies {
     implementation ext.libraries.activity
 
     // Use library in Version Category
-    implementation libs.androidX.activity.ktx
+    implementation libs.google.material
 }
 ```
 

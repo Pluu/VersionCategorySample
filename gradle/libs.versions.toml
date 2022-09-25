@@ -1,12 +1,20 @@
 [versions]
+# Google/Android
+androidGradlePlugin = "7.3.0"
 activity = "1.6.0"
 appcompat = "1.5.1"
 core = "1.9.0"
-material = "1.6.1"
+
+# Jetbrains
+kotlin = "1.7.10"
 
 [libraries]
 activity = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
-androidX-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 androidX-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-androidX-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
-google-material = { module = "com.google.android.material:material", version.ref = "material" }
+androidX-core = { module = "androidx.core:core", version.ref = "core" }
+google-material = { module = "com.google.android.material:material", version = "1.6.1" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
